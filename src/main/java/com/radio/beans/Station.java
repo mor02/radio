@@ -1,4 +1,4 @@
-package radio;
+package com.radio.beans;
 
 public class Station {
 
