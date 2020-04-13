@@ -28,6 +28,24 @@ public class SimulateurCtrl {
 		LOGGER.debug("fin AllumerAction()");
 		
 	}
+	
+	public void chercherStationByNum(int num) {
+
+		if (radio.isEtat()) {
+			try {
+				String frequence = radio.getMemoire().getFrequences().get(num - 1);
+				for (Station s : stationMocks.getStations()) {
+					if (frequence.equals(String.valueOf(s.getFrequenceStation()))) {
+						this.radio.setStation(s);
+					}
+				}
+			} catch (IndexOutOfBoundsException e) {
+				LOGGER.info("Chaine non sauvegardee");
+			}
+
+		}
+
+	}
 
 	public void nextStation(Station s) {
 

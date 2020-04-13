@@ -11,6 +11,7 @@ public class Configuration {
 	private BreakingNews breakingNews;
 	private RadioFM radioFM;
 	private int tailleMemoire=3;
+	private USB usb;
 	
 	public Configuration() {
 		super();
@@ -22,6 +23,7 @@ public class Configuration {
 		this.reveil = new Reveil();
 		this.breakingNews = new BreakingNews();
 		this.radioFM = new RadioFM();
+		this.usb = new USB();
 	}
 	public RechercheAuto getRechercheAuto() {
 		return rechercheAuto;
@@ -76,6 +78,12 @@ public class Configuration {
 	}
 	public void setTailleMemoire(int tailleMemoire) {
 		this.tailleMemoire = tailleMemoire;
+	}
+	public USB getUsb() {
+		return usb;
+	}
+	public void setUsb(USB usb) {
+		this.usb = usb;
 	}
 	
 	
