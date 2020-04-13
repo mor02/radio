@@ -15,6 +15,8 @@ import javax.swing.JRadioButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import com.radio.beans.Configuration;
+import javax.swing.JTextField;
+import javax.swing.GroupLayout;
 
 /**
  *
@@ -23,6 +25,7 @@ import com.radio.beans.Configuration;
 public class ConfigGui extends javax.swing.JFrame {
 
 	public static Configuration configurationRadio = new Configuration();
+	private JTextField radioMemoire;
 	//private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
@@ -102,73 +105,98 @@ public class ConfigGui extends javax.swing.JFrame {
 				ConfigGui.configurationRadio.getReveil().setEtat(radioButtonReveilOn.isSelected());
 				ConfigGui.configurationRadio.getBreakingNews().setEtat(radioButtonBNOn.isSelected());
 				ConfigGui.configurationRadio.getRadioFM().setEtat(radioButtonRMOn.isSelected());
+				//TODO : il faut gérer l'exception NumberFormatException 
+				ConfigGui.configurationRadio.setTailleMemoire(Integer.parseInt(radioMemoire.getText()));
 			}
 		});
+		
+		JLabel lblNewLabel_2 = new JLabel("m\u00E9moire");
+		
+		radioMemoire = new JTextField();
+		radioMemoire.setText("3");
+		radioMemoire.setColumns(10);
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-		layout.setHorizontalGroup(layout.createParallelGroup(Alignment.TRAILING).addGroup(layout.createSequentialGroup()
-				.addContainerGap(40, Short.MAX_VALUE)
-				.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(layout.createSequentialGroup().addGroup(layout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblNewLabel).addComponent(lblNewLabel_1).addComponent(lblNewLabel_4)
-								.addComponent(lblNewLabel_5).addComponent(lblNewLabel_6).addComponent(lblNewLabel_7)
-								.addComponent(lblNewLabel_8).addComponent(lblNewLabel_9)).addGap(60)
-								.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
-										.addGroup(layout.createSequentialGroup()
-												.addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(radioButtonRHOn))
-										.addGroup(layout.createSequentialGroup()
-												.addPreferredGap(ComponentPlacement.RELATED)
-												.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-														.addGroup(layout.createSequentialGroup()
-																.addComponent(radioButtonSEOn).addGap(23))
-														.addGroup(layout.createSequentialGroup()
-																.addComponent(radioButtonHTOn).addGap(23))
-														.addGroup(layout.createSequentialGroup()
-																.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-																		.addComponent(radioButtonHorlogeOn)
-																		.addComponent(radioButtonEEOn)
-																		.addComponent(radioButtonReveilOn)
-																		.addComponent(radioButtonBNOn)
-																		.addComponent(radioButtonRMOn))
-																.addGap(23)))))
-								.addGap(11))
-						.addGroup(layout.createSequentialGroup().addComponent(btnNewButton).addGap(86)))));
+		layout.setHorizontalGroup(
+			layout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, layout.createSequentialGroup()
+					.addGap(87)
+					.addComponent(btnNewButton)
+					.addContainerGap(104, Short.MAX_VALUE))
+				.addGroup(layout.createSequentialGroup()
+					.addContainerGap(40, Short.MAX_VALUE)
+					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel)
+						.addComponent(lblNewLabel_1)
+						.addComponent(lblNewLabel_4)
+						.addComponent(lblNewLabel_5)
+						.addComponent(lblNewLabel_6)
+						.addComponent(lblNewLabel_7)
+						.addComponent(lblNewLabel_8)
+						.addComponent(lblNewLabel_9)
+						.addComponent(lblNewLabel_2))
+					.addGap(60)
+					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+						.addComponent(radioButtonRHOn)
+						.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+							.addComponent(radioButtonSEOn)
+							.addComponent(radioButtonHTOn)
+							.addComponent(radioButtonHorlogeOn)
+							.addComponent(radioButtonEEOn)
+							.addComponent(radioButtonReveilOn)
+							.addComponent(radioButtonBNOn)
+							.addComponent(radioButtonRMOn))
+						.addComponent(radioMemoire, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+					.addGap(24))
+		);
 		layout.setVerticalGroup(
-				layout.createParallelGroup(Alignment.LEADING)
-						.addGroup(
-								layout.createSequentialGroup().addContainerGap(27, Short.MAX_VALUE)
-										.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-												.addComponent(radioButtonRHOn).addComponent(lblNewLabel))
-										.addGap(13)
-										.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-												.addComponent(lblNewLabel_1).addComponent(radioButtonHTOn))
-										.addPreferredGap(ComponentPlacement.UNRELATED)
-										.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-												.addComponent(radioButtonSEOn).addComponent(lblNewLabel_4))
-										.addPreferredGap(ComponentPlacement.UNRELATED)
-										.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-												.addComponent(radioButtonEEOn).addComponent(lblNewLabel_5))
-										.addPreferredGap(ComponentPlacement.UNRELATED)
-										.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-												.addComponent(lblNewLabel_6).addComponent(radioButtonHorlogeOn))
-										.addPreferredGap(ComponentPlacement.UNRELATED)
-										.addGroup(
-												layout.createParallelGroup(Alignment.LEADING)
-														.addComponent(radioButtonReveilOn)
-														.addGroup(layout.createSequentialGroup().addGap(4)
-																.addComponent(lblNewLabel_7)))
-										.addPreferredGap(ComponentPlacement.UNRELATED)
-										.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-												.addComponent(lblNewLabel_9)
-												.addGroup(layout.createSequentialGroup()
-														.addGroup(layout.createParallelGroup(Alignment.LEADING)
-																.addComponent(radioButtonBNOn)
-																.addGroup(layout.createSequentialGroup().addGap(4)
-																		.addComponent(lblNewLabel_8)))
-														.addPreferredGap(ComponentPlacement.UNRELATED)
-														.addComponent(radioButtonRMOn)))
-										.addGap(46).addComponent(btnNewButton).addGap(183)));
+			layout.createParallelGroup(Alignment.LEADING)
+				.addGroup(layout.createSequentialGroup()
+					.addContainerGap(27, Short.MAX_VALUE)
+					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(radioButtonRHOn)
+						.addComponent(lblNewLabel))
+					.addGap(13)
+					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblNewLabel_1)
+						.addComponent(radioButtonHTOn))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(radioButtonSEOn)
+						.addComponent(lblNewLabel_4))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(radioButtonEEOn)
+						.addComponent(lblNewLabel_5))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblNewLabel_6)
+						.addComponent(radioButtonHorlogeOn))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+						.addComponent(radioButtonReveilOn)
+						.addGroup(layout.createSequentialGroup()
+							.addGap(4)
+							.addComponent(lblNewLabel_7)))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblNewLabel_9)
+						.addGroup(layout.createSequentialGroup()
+							.addGroup(layout.createParallelGroup(Alignment.LEADING)
+								.addComponent(radioButtonBNOn)
+								.addGroup(layout.createSequentialGroup()
+									.addGap(4)
+									.addComponent(lblNewLabel_8)))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(radioButtonRMOn)))
+					.addGap(18)
+					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNewLabel_2)
+						.addComponent(radioMemoire, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(41)
+					.addComponent(btnNewButton)
+					.addGap(156))
+		);
 		getContentPane().setLayout(layout);
 
 		pack();

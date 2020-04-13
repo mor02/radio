@@ -8,7 +8,14 @@ public class Radio implements IRadioServices{
 	private Station station;
 	private HauteParleur hp;
 	private Ecran ecran;
+	private Memoire memoire;
 	
+	
+	public Radio() {
+		super();
+		hp=new HauteParleur();
+		memoire = new Memoire(3);
+	}
 	public boolean arreterRadio() {
 		// TODO Auto-generated method stub
 		return false;
@@ -40,6 +47,12 @@ public class Radio implements IRadioServices{
 	}
 	public void setEcran(Ecran ecran) {
 		this.ecran = ecran;
+	}
+	public Memoire getMemoire() {
+		return memoire;
+	}
+	public void setMemoire(Memoire memoire) {
+		this.memoire = memoire;
 	}
 	
 	

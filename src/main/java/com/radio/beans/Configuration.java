@@ -10,6 +10,7 @@ public class Configuration {
 	private Reveil reveil;
 	private BreakingNews breakingNews;
 	private RadioFM radioFM;
+	private int tailleMemoire=10;
 	
 	public Configuration() {
 		super();
@@ -69,6 +70,12 @@ public class Configuration {
 	}
 	public void setRadioFM(RadioFM radioFM) {
 		this.radioFM = radioFM;
+	}
+	public int getTailleMemoire() {
+		return tailleMemoire;
+	}
+	public void setTailleMemoire(int tailleMemoire) {
+		this.tailleMemoire = tailleMemoire;
 	}
 	
 	
