@@ -18,7 +18,8 @@ import java.awt.event.ActionEvent;
 public class RadioGui {
 
 	private JFrame frame;
-	private ConfigGui configGui;
+	private ConfigGui configGui = new ConfigGui();
+	private SimuGui simuGui = new SimuGui();
 
 	/**
 	 * Launch the application.
@@ -60,7 +61,6 @@ public class RadioGui {
 		JMenuItem mntmNewMenuItem = new JMenuItem("Configuration");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				configGui = new ConfigGui();
 				configGui.setVisible(true);
 			}
 		});
@@ -68,6 +68,11 @@ public class RadioGui {
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Simulation");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				simuGui.setVisible(true);
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_2);
 		
 		JMenu mnNewMenu_1 = new JMenu("Aide");

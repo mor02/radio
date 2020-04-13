@@ -1,8 +1,12 @@
 package com.radio.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 import com.radio.beans.Radio;
+import com.radio.beans.RechercheAuto;
 import com.radio.beans.Station;
 import com.radio.mocks.StationMocks;
 
@@ -87,6 +91,22 @@ public class SimulateurCtrl {
 		}
 	}
 
+	public int rechercheAuto(int taille) {
+		int coutNbChaine=0;
+		List<String> memoiresTmp = new ArrayList<String>();
+		for(int i =0; i<taille; i++) {
+			if(i<stationMocks.getStations().size()) {
+				coutNbChaine++;
+				memoiresTmp.add(String.valueOf(stationMocks.getStations().get(i).getFrequenceStation()));
+			}
+		}
+		if(!memoiresTmp.isEmpty()) {
+			radio.getMemoire().getFrequences().clear();
+			radio.getMemoire().getFrequences().addAll(memoiresTmp);
+		}
+		radio.getMemoire().saveMemoire();
+		return coutNbChaine;
+	}
 	public Radio getRadio() {
 		return radio;
 	}

@@ -10,7 +10,7 @@ public class Configuration {
 	private Reveil reveil;
 	private BreakingNews breakingNews;
 	private RadioFM radioFM;
-	private int tailleMemoire=10;
+	private int tailleMemoire=3;
 	
 	public Configuration() {
 		super();

@@ -26,6 +26,7 @@ public class ConfigGui extends javax.swing.JFrame {
 
 	public static Configuration configurationRadio = new Configuration();
 	private JTextField radioMemoire;
+	
 	//private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
@@ -64,7 +65,7 @@ public class ConfigGui extends javax.swing.JFrame {
 
 		JLabel lblNewLabel_6 = new JLabel("Date et Heure automatique");
 
-		JLabel lblNewLabel_7 = new JLabel("Horloge automatique");
+		JLabel lblNewLabel_7 = new JLabel("R\u00E9veil");
 
 		JLabel lblNewLabel_8 = new JLabel("Breaking news");
 
@@ -107,6 +108,7 @@ public class ConfigGui extends javax.swing.JFrame {
 				ConfigGui.configurationRadio.getRadioFM().setEtat(radioButtonRMOn.isSelected());
 				//TODO : il faut gérer l'exception NumberFormatException 
 				ConfigGui.configurationRadio.setTailleMemoire(Integer.parseInt(radioMemoire.getText()));
+				setVisible(false);
 			}
 		});
 		
