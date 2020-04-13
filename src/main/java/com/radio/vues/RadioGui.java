@@ -11,12 +11,15 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import javax.swing.event.ChangeListener;
+
+import org.apache.log4j.Logger;
+
 import javax.swing.event.ChangeEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class RadioGui {
-
+	private Logger LOGGER = Logger.getLogger(RadioGui.class);
 	private JFrame frame;
 	private ConfigGui configGui = new ConfigGui();
 	private SimuGui simuGui = new SimuGui();
@@ -28,6 +31,7 @@ public class RadioGui {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					RadioGui window = new RadioGui();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -41,6 +45,7 @@ public class RadioGui {
 	 * Create the application.
 	 */
 	public RadioGui() {
+		LOGGER.info("démarrage de l'application");
 		initialize();
 	}
 

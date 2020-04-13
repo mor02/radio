@@ -1,8 +1,6 @@
 package com.radio.beans;
 
-import com.radio.services.IRadioServices;
-
-public class Radio implements IRadioServices{
+public class Radio {
 
 	private boolean etat;
 	private Station station;
@@ -10,19 +8,23 @@ public class Radio implements IRadioServices{
 	private Ecran ecran;
 	private Memoire memoire;
 	
+	private static Radio instance = null;
 	
-	public Radio() {
+	//implementation du singlotone
+	public static final Radio getInstance() 
+    {
+		if(instance==null) {
+			instance = new Radio();
+		}
+        return instance;
+    }
+	
+	
+	private Radio() {
+		
 		super();
 		hp=new HauteParleur();
 		memoire = new Memoire(3);
-	}
-	public boolean arreterRadio() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	public boolean demarrerRadio() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 	public boolean isEtat() {
 		return etat;

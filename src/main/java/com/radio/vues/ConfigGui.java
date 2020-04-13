@@ -14,7 +14,11 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import org.apache.log4j.Logger;
+
 import com.radio.beans.Configuration;
+import com.radio.controllers.SimulateurCtrl;
+
 import javax.swing.JTextField;
 import javax.swing.GroupLayout;
 
@@ -24,6 +28,7 @@ import javax.swing.GroupLayout;
  */
 public class ConfigGui extends javax.swing.JFrame {
 
+	private Logger LOGGER = Logger.getLogger(ConfigGui.class);
 	public static Configuration configurationRadio = new Configuration();
 	private JTextField radioMemoire;
 	JRadioButton radioButtonUSB;
@@ -108,8 +113,14 @@ public class ConfigGui extends javax.swing.JFrame {
 				ConfigGui.configurationRadio.getBreakingNews().setEtat(radioButtonBNOn.isSelected());
 				ConfigGui.configurationRadio.getRadioFM().setEtat(radioButtonRMOn.isSelected());
 				ConfigGui.configurationRadio.getUsb().setEtat(radioButtonUSB.isSelected());
-				//TODO : il faut gérer l'exception NumberFormatException 
-				ConfigGui.configurationRadio.setTailleMemoire(Integer.parseInt(radioMemoire.getText()));
+				try {
+					ConfigGui.configurationRadio.setTailleMemoire(Integer.parseInt(radioMemoire.getText()));
+				}catch (NumberFormatException e5) {
+					LOGGER.error("La taille mémoire doit etre un nombre");
+				}finally {
+					ConfigGui.configurationRadio.setTailleMemoire(3);
+				}
+				
 				setVisible(false);
 			}
 		});

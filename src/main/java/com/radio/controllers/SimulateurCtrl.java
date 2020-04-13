@@ -6,15 +6,16 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.radio.beans.Radio;
-import com.radio.beans.RechercheAuto;
 import com.radio.beans.Station;
 import com.radio.mocks.StationMocks;
+
+import Exceptions.ExceptionReseau;
 
 
 public class SimulateurCtrl {
 
 	private Logger LOGGER = Logger.getLogger(SimulateurCtrl.class);
-	private Radio radio = new Radio();
+	private Radio radio = Radio.getInstance();
 	private StationMocks stationMocks = new StationMocks();
 	
 	public void allumerAction() {
@@ -33,6 +34,7 @@ public class SimulateurCtrl {
 
 		if (radio.isEtat()) {
 			try {
+				LOGGER.debug("Recherche de la chaine N° " + num);
 				String frequence = radio.getMemoire().getFrequences().get(num - 1);
 				for (Station s : stationMocks.getStations()) {
 					if (frequence.equals(String.valueOf(s.getFrequenceStation()))) {
@@ -40,20 +42,19 @@ public class SimulateurCtrl {
 					}
 				}
 			} catch (IndexOutOfBoundsException e) {
-				LOGGER.info("Chaine non sauvegardee");
+				LOGGER.info("aucune chaine trouvée / aucune Chaine non sauvegardee");
 			}
 
 		}
 
 	}
 
-	public void nextStation(Station s) {
+	public void nextStation(Station s) throws ExceptionReseau {
 
 		if (radio.isEtat()) {
 			if (stationMocks.getStations().isEmpty()) {
 				// Pas de réseau
-				// TODO gérer ce cas comme panne
-				//return null;
+				throw new ExceptionReseau("Pas de signale réseau");
 			}
 			if (s == null) {
 				this.radio.setStation(stationMocks.getStations().get(0));
@@ -71,12 +72,14 @@ public class SimulateurCtrl {
 
 	}
 	
-	public void previouStation(Station s) {
+	public void previouStation(Station s) throws ExceptionReseau {
 		if (radio.isEtat()) {
 			if (stationMocks.getStations().isEmpty()) {
 				// Pas de réseau
-				// TODO gérer ce cas comme panne
-				//return null;
+				if (stationMocks.getStations().isEmpty()) {
+					// Pas de réseau
+					throw new ExceptionReseau("Pas de signale réseau");
+				}
 			}
 			if (s == null) {
 				this.radio.setStation(stationMocks.getStations().get(0));
