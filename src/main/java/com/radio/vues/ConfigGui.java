@@ -117,7 +117,6 @@ public class ConfigGui extends javax.swing.JFrame {
 					ConfigGui.configurationRadio.setTailleMemoire(Integer.parseInt(radioMemoire.getText()));
 				}catch (NumberFormatException e5) {
 					LOGGER.error("La taille mémoire doit etre un nombre");
-				}finally {
 					ConfigGui.configurationRadio.setTailleMemoire(3);
 				}
 				

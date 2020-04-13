@@ -36,6 +36,7 @@ public class SimulateurCtrl {
 			try {
 				LOGGER.debug("Recherche de la chaine N° " + num);
 				String frequence = radio.getMemoire().getFrequences().get(num - 1);
+				LOGGER.debug("frequence rechercher " + frequence);
 				for (Station s : stationMocks.getStations()) {
 					if (frequence.equals(String.valueOf(s.getFrequenceStation()))) {
 						this.radio.setStation(s);
